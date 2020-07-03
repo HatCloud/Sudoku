@@ -26,7 +26,6 @@
             android:name=".Prefs"
             android:label="@string/settings_label">
         </activity>
-        "
         <activity
             android:name=".Game"
             android:label="@string/title_activity_game" >
