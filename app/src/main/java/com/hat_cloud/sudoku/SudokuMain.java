@@ -1,19 +1,18 @@
 package com.hat_cloud.sudoku;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.app.Activity;
-import android.content.Intent;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.util.Log;
 
 
-
-public class SudokuMain extends Activity implements OnClickListener{
+public class SudokuMain extends Activity implements OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +37,8 @@ public class SudokuMain extends Activity implements OnClickListener{
 
     }
 
-    public void onClick(View v){
-        switch(v.getId()){
+    public void onClick(View v) {
+        switch (v.getId()) {
 
             case R.id.button_continue_game:
                 startGame(Game.DIFFICULTY_CONTINUE);
@@ -50,7 +49,7 @@ public class SudokuMain extends Activity implements OnClickListener{
                 break;
 
             case R.id.button_about:
-                Intent i = new Intent(this,About.class);
+                Intent i = new Intent(this, About.class);
                 startActivity(i);
                 break;
 
@@ -80,7 +79,8 @@ public class SudokuMain extends Activity implements OnClickListener{
 
     //---Show the difficulty of game to select----
     private static final String TAG = "Sudoku";
-    private void openNewGameDialog(){
+
+    private void openNewGameDialog() {
         new AlertDialog.Builder(this)
                 .setTitle(R.string.sudoku_difficulty_title)
                 .setItems(R.array.difficulty,
@@ -93,13 +93,13 @@ public class SudokuMain extends Activity implements OnClickListener{
                         })
                 .show();
     }
+
     private void startGame(int i) {
         Log.d(TAG, "clicked on " + i);
         Intent intent = new Intent(this, Game.class);
         intent.putExtra(Game.KEY_DIFFICULTY, i);
         startActivity(intent);
     }
-
 
 
     @Override
